@@ -21,13 +21,26 @@ exec_always xfsettingsd
 exec_always setxkbmap -layout us -option ctrl:nocaps
 exec_always synclient PalmDetect=1
 exec_always ~/.logitech
-exec_always nohup pulseaudio &
+exec_always pulseaudio --start
 exec_always ~/bin/crossfeed
 
 # When an external is connected, set it up, making internal smaller
 #exec_always xrandr -q | grep '^DP.* connected' && xrandr --output eDP-1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP.* connected' | cut -d ' ' -f 1) --auto --right-of eDP-1
+exec_always xrandr -q | grep '^DP.* connected' && xrandr --output eDP-1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP.* connected' | cut -d ' ' -f 1) --auto --left-of eDP-1
+# exec_always xrandr -q | grep '^DP.* connected' && xrandr --output eDP-1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP.* connected' | cut -d ' ' -f 1) --auto --above eDP-1
+
+# Not modesetting
 #exec_always xrandr -q | grep '^DP. connected' && xrandr --output eDP1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP. connected' | cut -d ' ' -f 1) --auto --left-of eDP1
-exec_always xrandr -q | grep '^DP. connected' && xrandr --output eDP1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP. connected' | cut -d ' ' -f 1) --auto --above eDP1
+#exec_always xrandr -q | grep '^DP. connected' && xrandr --output eDP1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP. connected' | cut -d ' ' -f 1) --auto --above eDP1
+
+
+# Move the current workspace to the next output
+# (effectively toggles when you only have two outputs)
+
+# Horizontal
+bindsym $mod+x move workspace to output right
+# Vertical
+# bindsym $mod+x move workspace to output down
 
 
 # Appearance
@@ -137,14 +150,6 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-
-# Move the current workspace to the next output
-# (effectively toggles when you only have two outputs)
-
-# Horizontal
-# bindsym $mod+x move workspace to output right
-# Vertical
-bindsym $mod+x move workspace to output down
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
