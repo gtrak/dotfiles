@@ -135,7 +135,12 @@ export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-alias config='/usr/bin/git --git-dir=/home/gary/.cfg/ --work-tree=/home/gary'
 
 # Kubernetes
 (which kubectl > /dev/null && source <(kubectl completion bash)) || true
+
+# Shared aliases
+alias config='/usr/bin/git --git-dir=/home/gary/.cfg/ --work-tree=/home/gary'
+alias upd='sudo apt-get update'
+alias upg='sudo apt-get dist-upgrade'
+
