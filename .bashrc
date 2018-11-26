@@ -137,7 +137,7 @@ export HISTFILE=~/.bash_eternal_history
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # Kubernetes
-(which kubectl > /dev/null && source <(kubectl completion bash)) || true
+if [ -x "$(command -v kubectl)" ]; then source <(kubectl completion bash); fi
 
 # Shared aliases
 alias config='/usr/bin/git --git-dir=/home/gary/.cfg/ --work-tree=/home/gary'
