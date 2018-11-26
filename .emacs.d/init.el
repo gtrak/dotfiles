@@ -569,11 +569,7 @@
 (setq merlin-locate-in-new-window 'never)
 
 ;;; better-defaults assumes we want helm, but it's a little annoying for the quick file open 
-(global-set-key (kbd "C-x C-f") 'ido-find-file)
-(require 'ido)
-(ido-mode t)
-
-(setq ido-enable-flex-matching t)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 (require 'cider)
 (define-key cider-repl-mode-map (kbd "C-c M-o") 'cider-repl-clear-buffer)
