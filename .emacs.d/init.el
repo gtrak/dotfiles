@@ -67,7 +67,11 @@
    less-css-mode
    markdown-mode
    handlebars-mode
+   ;; magit
    magit
+   magit-popup
+   transient
+   ghub
    coffee-mode
    company-mode
    tuareg-mode
@@ -81,7 +85,6 @@
    helm
    helm-ag
    helm-ls-git
-   omake-syntax
    helm-projectile
    auto-highlight-symbol
    undo-tree
@@ -89,6 +92,7 @@
    prettier-eslint
    wakatime-mode
    reason-mode
+   org-trello
    ))
 
 (custom-set-variables
@@ -99,14 +103,7 @@
  '(cljr-favor-prefix-notation nil)
  '(el-get-sources
    '((:name cider :checkout "v0.18.0")
-     (:name magit :checkout "2.12.1")
-     (:name omake-syntax :description "OMake syntax" :type github :pkgname "emacsmirror/omake" :compile "\\.el$" :prepare
-            (progn
-              (autoload 'omake-mode "omake-mode" "OMake editing mode" t)
-              (add-to-list 'auto-mode-alist
-                           '("OMake\\(?:file\\|root\\)\\'" . omake-mode))
-              (add-to-list 'auto-mode-alist
-                           '("\\.om\\'" . omake-mode))))
+     (:name magit :checkout "v2.90.1")
      (:name direnv :description "emacs-direnv" :type github :pkgname "wbolster/emacs-direnv" :compile "\\.el$" :prepare
             (progn
               (autoload 'direnv "emacs-direnv" "emacs-direnv" t)))
@@ -330,8 +327,47 @@
 ; open helm buffer inside current window, not occupy whole other window
 (setq helm-split-window-in-side-p t)
 
+
+;;; Org-mode
 (global-set-key (kbd "C-c l") 'org-store-link)
 (setq org-return-follows-link 't)
+
+(setq org-agenda-files (list "~/Dropbox/Docs/org/meta.org"
+                             "~/Dropbox/Docs/org/home.org"
+                             "~/Dropbox/Docs/org/work.org"
+                             "~/Dropbox/Docs/org/biederman.org"
+                             "~/Dropbox/Docs/org/hibler.org"
+                             "/tmp/gcal1.org"
+                             "/tmp/gcal2.org"))
+
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-coc" 'org-capture)
+(setq org-capture-templates '(("m" "Todo [meta]" entry
+                               (file+headline "~/Dropbox/Docs/org/meta.org" "Next")
+                               "* TODO %i%?")
+                              ("h" "Todo [home]" entry
+                               (file+headline "~/Dropbox/Docs/org/home.org" "Next")
+                               "* TODO %i%?")
+                              ("w" "Todo [work]" entry
+                               (file+headline "~/Dropbox/Docs/org/work.org" "Next")
+                               "* TODO %i%?")
+                              ("s" "Todo [side]" entry
+                               (file+headline "~/Dropbox/Docs/org/side.org" "Next")
+                               "* TODO %i%?")
+                              ("p" "Todo [personal]" entry
+                               (file+headline "~/Dropbox/Docs/org/personal.org" "Next")
+                               "* TODO %i%?")
+                              ))
+(setq org-log-done t)
+(custom-set-variables '(org-trello-files '("~/Dropbox/Docs/org/home.org")))
+(require 'org-trello)
+(setq org-todo-keywords
+      '((sequence "TODO" "DOING" "BLOCKED" "|" "DONE")))
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+        ("DOING" . "orange")
+        ("BLOCKED" . (:foreground "blue" :weight bold))))
 
 (defun toggle-fullscreen ()
   "Toggle full screen on X11"
@@ -383,7 +419,6 @@
 
 ;; (setq js-indent-level 2)
 
-(require 'magit)
 (setq magit-last-seen-setup-instructions "1.4.0")
 (setq git-commit-finish-query-functions nil)
 
@@ -587,7 +622,7 @@
 
 (require 'tuareg)
 
-(setq tuareg-test-command  "omake && bin/inline_tests_genisys.opt inline-test-runner genisys -only-test ")
+(setq tuareg-test-command  "bin/inline_tests_genisys.opt inline-test-runner genisys -only-test ")
 (setq tuareg-project-dir "~/dev/arena/godzilla")
 
 (defun tuareg-test-file ()

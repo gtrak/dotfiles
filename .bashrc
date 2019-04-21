@@ -120,7 +120,12 @@ eval `keychain -q --eval --agents ssh id_rsa id_arena_ssh`
 # added by Miniconda2 4.3.11 installer
 export PATH="/home/gary/opt/miniconda2/bin:$PATH"
 
+# node
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# go
+export PATH="$HOME/go/bin:$PATH"
+
 
 # Eternal bash history.
 # ---------------------
