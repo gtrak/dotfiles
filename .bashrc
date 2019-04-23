@@ -149,3 +149,4 @@ alias config='/usr/bin/git --git-dir=/home/gary/.cfg/ --work-tree=/home/gary'
 alias upd='sudo apt-get update'
 alias upg='sudo apt-get dist-upgrade'
 
+

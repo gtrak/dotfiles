@@ -93,6 +93,7 @@
    wakatime-mode
    reason-mode
    org-trello
+   terraform-mode
    ))
 
 (custom-set-variables
@@ -335,7 +336,7 @@
 (setq org-agenda-files (list "~/Dropbox/Docs/org/meta.org"
                              "~/Dropbox/Docs/org/home.org"
                              "~/Dropbox/Docs/org/work.org"
-                             "~/Dropbox/Docs/org/biederman.org"
+                             "~/Dropbox/Docs/org/side.org"
                              "~/Dropbox/Docs/org/hibler.org"
                              "/tmp/gcal1.org"
                              "/tmp/gcal2.org"))
@@ -635,6 +636,8 @@
       (pop-to-buffer "*tuareg-tests*"))))
 
 (define-key tuareg-mode-map (kbd "C-c t f") 'tuareg-test-file)
+;;; Unset a weird default
+(define-key tuareg-mode-map (kbd "M-q") 'fill-paragraph)
 
 (defun tuareg-test-line ()
   (interactive)
@@ -752,3 +755,8 @@
 (add-hook 'reason-mode-hook 'reason-setup)
 
 (setq helm-dash-browser-func 'eww)
+
+(require 'ansi-color)
+(defun display-ansi-colors ()
+  (interactive)
+  (ansi-color-apply-on-region (point-min) (point-max)))
