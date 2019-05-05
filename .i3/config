@@ -199,6 +199,10 @@ bar {
         }
 }
 
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_options ctrl:nocaps
+}
+
 # Media controls
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
@@ -210,7 +214,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl s 10%+ # increase screen brightne
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%- # decrease screen brightness
 
 hide_edge_borders both
-new_window pixel 1
+new_window pixel 4
 
 workspace_auto_back_and_forth yes
 
