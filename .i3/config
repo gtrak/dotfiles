@@ -12,6 +12,7 @@
 # Multi-monitor
 
 # exec_always --no-startup-id xrandr --auto --output eDP1 --mode 2560x1440 --primary --dpi 120
+exec_always --no-startup-id xrandr --auto --output eDP-1 --mode 2560x1440 --primary --dpi 120
 # exec_always --no-startup-id xrandr --auto --output DP1-1 --mode 1920x1200 --left-of eDP1
 # exec_always --no-startup-id xrandr --auto --output HDMI1 --mode 1920x1200 --right-of eDP1
 # screws up DPI
@@ -26,13 +27,17 @@ exec_always ~/bin/crossfeed
 
 # When an external is connected, set it up, making internal smaller
 #exec_always xrandr -q | grep '^DP.* connected' && xrandr --output eDP-1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP.* connected' | cut -d ' ' -f 1) --auto --right-of eDP-1
-exec_always xrandr -q | grep '^DP.* connected' && xrandr --output eDP-1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP.* connected' | cut -d ' ' -f 1) --auto --left-of eDP-1
+#exec_always xrandr -q | grep '^DP.* connected' && xrandr --output eDP-1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP.* connected' | cut -d ' ' -f 1) --auto --left-of eDP-1
+exec_always xrandr -q | grep '^DP.* connected' && xrandr --output eDP-1 --mode 1920x1080 && xrandr --output $(xrandr -q |grep '^DP.* connected' | cut -d ' ' -f 1) --auto --left-of eDP-1
 # exec_always xrandr -q | grep '^DP.* connected' && xrandr --output eDP-1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP.* connected' | cut -d ' ' -f 1) --auto --above eDP-1
 
 # Not modesetting
 #exec_always xrandr -q | grep '^DP. connected' && xrandr --output eDP1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP. connected' | cut -d ' ' -f 1) --auto --left-of eDP1
 #exec_always xrandr -q | grep '^DP. connected' && xrandr --output eDP1 --mode 1920x1200 && xrandr --output $(xrandr -q |grep '^DP. connected' | cut -d ' ' -f 1) --auto --above eDP1
 
+# Appearance
+
+set $mod Mod4
 
 # Move the current workspace to the next output
 # (effectively toggles when you only have two outputs)
@@ -42,10 +47,6 @@ bindsym $mod+x move workspace to output right
 # Vertical
 # bindsym $mod+x move workspace to output down
 
-
-# Appearance
-
-set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -209,7 +210,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl s 10%+ # increase screen brightne
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%- # decrease screen brightness
 
 hide_edge_borders both
-new_window pixel 4
+new_window pixel 1
 
 workspace_auto_back_and_forth yes
 

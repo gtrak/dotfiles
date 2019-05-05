@@ -337,7 +337,7 @@
                              "~/Dropbox/Docs/org/home.org"
                              "~/Dropbox/Docs/org/work.org"
                              "~/Dropbox/Docs/org/side.org"
-                             "~/Dropbox/Docs/org/hibler.org"
+                             "~/Dropbox/Docs/org/personal.org"
                              "/tmp/gcal1.org"
                              "/tmp/gcal2.org"))
 
@@ -345,19 +345,19 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-coc" 'org-capture)
 (setq org-capture-templates '(("m" "Todo [meta]" entry
-                               (file+headline "~/Dropbox/Docs/org/meta.org" "Next")
+                               (file+headline "~/Dropbox/Docs/org/meta.org" "Next Tasks")
                                "* TODO %i%?")
                               ("h" "Todo [home]" entry
-                               (file+headline "~/Dropbox/Docs/org/home.org" "Next")
+                               (file+headline "~/Dropbox/Docs/org/home.org" "Next Tasks")
                                "* TODO %i%?")
                               ("w" "Todo [work]" entry
-                               (file+headline "~/Dropbox/Docs/org/work.org" "Next")
+                               (file+headline "~/Dropbox/Docs/org/work.org" "Next Tasks")
                                "* TODO %i%?")
                               ("s" "Todo [side]" entry
-                               (file+headline "~/Dropbox/Docs/org/side.org" "Next")
+                               (file+headline "~/Dropbox/Docs/org/side.org" "Next Tasks")
                                "* TODO %i%?")
                               ("p" "Todo [personal]" entry
-                               (file+headline "~/Dropbox/Docs/org/personal.org" "Next")
+                               (file+headline "~/Dropbox/Docs/org/personal.org" "Next Tasks")
                                "* TODO %i%?")
                               ))
 (setq org-log-done t)
