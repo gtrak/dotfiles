@@ -371,6 +371,8 @@
         ("DOING" . "orange")
         ("BLOCKED" . (:foreground "blue" :weight bold))))
 
+(define-key org-mode-map (kbd "C-c C-x C-p") 'org-pomodoro)
+
 (defun toggle-fullscreen ()
   "Toggle full screen on X11"
   (interactive)
