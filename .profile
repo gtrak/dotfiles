@@ -54,3 +54,7 @@ export EDITOR='emacs -nw -q'
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/gary/.sdkman"
 [[ -s "/home/gary/.sdkman/bin/sdkman-init.sh" ]] && source "/home/gary/.sdkman/bin/sdkman-init.sh"
+export PATH="/home/gary/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+

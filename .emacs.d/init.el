@@ -93,6 +93,7 @@
    wakatime-mode
    reason-mode
    org-trello
+   org-pomodoro
    terraform-mode
    ))
 
