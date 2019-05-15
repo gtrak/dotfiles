@@ -128,9 +128,10 @@
             (progn
               (autoload 'reason-mode "reason mode" "Run reason mode" t)
               (add-to-list 'auto-mode-alist
-                           '("\\.re\\'" . reason-mode))))
-     ))
-
+                           '("\\.re\\'" . reason-mode))))))
+ '(org-agenda-files
+   '("~/Dropbox/Docs/org/meta.org" "~/Dropbox/Docs/org/home.org" "~/Dropbox/Docs/org/work.org" "~/Dropbox/Docs/org/side.org" "~/Dropbox/Docs/org/personal.org"))
+ '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
    '(tracking ansible ansible-vault async queue inflections direnv better-defaults))
  '(safe-local-variable-values
@@ -372,6 +373,8 @@
         ("BLOCKED" . (:foreground "blue" :weight bold))))
 
 (define-key org-mode-map (kbd "C-c C-x C-p") 'org-pomodoro)
+(require 'org-agenda)
+(org-defkey org-agenda-mode-map "C-c C-x C-p" 'org-pomodoro)
 
 (defun toggle-fullscreen ()
   "Toggle full screen on X11"
@@ -423,6 +426,7 @@
 
 ;; (setq js-indent-level 2)
 
+(require 'magit-blame)
 (setq magit-last-seen-setup-instructions "1.4.0")
 (setq git-commit-finish-query-functions nil)
 
